@@ -1,0 +1,12 @@
+{% if verification_status %}
+    <h2>Verification code is not correct. Try to put it again.</h2>
+{% endif %}
+
+<p>SMS to phone number {{ phone_number }} was sent.<br>Please put verification
+    number below.
+</p>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
