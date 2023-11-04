@@ -1,6 +1,11 @@
-from django import forms
+from django import (
+    forms,
+)
 import phonenumbers
-from .models import PhoneNumber, VerificationPair
+from .models import (
+    PhoneNumber,
+    VerificationPair,
+)
 
 
 class VarificationForm(forms.ModelForm):
@@ -14,7 +19,9 @@ class PhoneNumberForm(forms.ModelForm):
         model = PhoneNumber
         fields = ["phone_number"]
 
-    def clean_phone_number(self):
+    def clean_phone_number(
+        self,
+    ):
         phone = self.cleaned_data["phone_number"]
 
         # phone check
@@ -29,7 +36,8 @@ class PhoneNumberForm(forms.ModelForm):
             parsed_phone = phonenumbers.parse(phone)
             phone_format = phonenumbers.PhoneNumberFormat.INTERNATIONAL
             normalized_number = phonenumbers.format_number(
-                numobj=parsed_phone, num_format=phone_format
+                numobj=parsed_phone,
+                num_format=phone_format,
             )
         except phonenumbers.phonenumberutil.NumberParseException:
             raise forms.ValidationError("Invalid phone number")

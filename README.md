@@ -3,7 +3,7 @@
 <li>Install dependency</li>
 
 ```
-pip install -r reqquirements.txt
+pip install -r requirements.txt
 ```
 
 <li>Run broker</li>
